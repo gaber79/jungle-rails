@@ -1,0 +1,8 @@
+<h1>Admin Categories</h1>
+
+<% @categories.each do |category| %>
+  <p>Name: <%= category.name %></p>
+  <p>Created at: <%= category.created_at %></p>
+  <p><% link_to '+ New Category', [:new, :admin, :category] %></p>
+
+  <% end %>
