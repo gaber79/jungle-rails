@@ -38,12 +38,12 @@
       <%= form_tag orders_path do %>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= @cart_total * 100 %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
+          data-key="pk_test_tMtTQtoSgg398cmWi9bONAGy"
+          data-amount="999"
+          data-name="Demo Site"
+          data-description="Widget"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
           data-locale="auto"
-          data-email="kvirani@gmail.com"
           data-currency="cad">
         </script>
       <% end %>
