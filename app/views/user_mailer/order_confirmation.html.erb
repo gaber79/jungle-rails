@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello,</h1>
+    <p>
+      Your order has been processed. Here are the details for order #: <%= @order.id %> <br>
+    </p>
+    <p>
+      Total: <%= order.total %>.
+    </p>
+    <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_total = 0 %>
+        <% @order.line_items.each do |line_item| %>
+          <%= render 'order', line_item: line_item %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= humanized_money_with_symbol @order.total %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+    <p>Thanks for your order and have a great day!</p>
+  </body>
+</html>
