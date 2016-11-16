@@ -121,13 +121,29 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+reference_product = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
 })
+
+# USERS
+User.destroy_all
+puts 'Putting in a few users...'
+
+reference_user = User.create(first_name: 'Gaber', last_name: 'Archie', email: 'gaber@gaber.gaber', password_digest: '$2a$10$ug6en5vF0sb/x9si1S/pdODofOaFuBP0dwdNW1ajLwnAsVLx4DLwO')
+
+# REVIEWS
+Review.destroy_all
+puts 'Putting in some reviews!...'
+
+# Review.create(product_id: 12, user_id: 1, description: 'This sucks!', rating: 1)
+# Review.create(product_id: 11, user_id: 1, description: 'SoldOUT?!', rating: 4, created_at: '2016-11-15 02:15:21.997964', updated_at: '2016-11-15 02:15:21.997964')
+# Review.create(product_id: 8, user_id: 1, description: 'This is great!!!!', rating: 5, created_at: '2016-11-15 02:15:21.997964', updated_at: '2016-11-15 02:15:21.997964')
+# Review.create(product_id: 202, user_id: 13, description: 'What the hell?', rating: 1, created_at: '2016-11-15 02:15:21.997964', updated_at: '2016-11-15 02:15:21.997964')
+Review.create(product_id: reference_product.id, user_id: reference_user.id, description: 'What the hell?', rating: 1, created_at: '2016-11-15 02:15:21.997964', updated_at: '2016-11-15 02:15:21.997964')
 
 
 puts "DONE!"
